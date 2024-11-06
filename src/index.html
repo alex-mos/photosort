@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+    <meta name="viewport" content="width=device-width" />
+    <title>PhotoSort</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div>
+        <button class="primary-button mb-15 js-src-dir-picker">Выбрать путь к исходной папке</button>
+        <div>Исходная папка:</div>
+        <div class="mb-25 dir-path js-src-dir">Не выбрана</div>
+
+        <button class="primary-button mb-15 js-dest-dir-picker">Выбрать путь к целевой папке</button>
+        <div>Целевая папка:</div>
+        <div class="mb-25 dir-path js-dest-dir">Не выбрана</div>
+
+        <div class="mb-15">Названия файлов (можно частично)</div>
+        <textarea type="text" rows="24" id="filenames" class="filenames js-filenames"></textarea>
+      </div>
+
+      <button class="primary-button js-copy-button">Копировать</button>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

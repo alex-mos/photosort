@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 440px;
+  height: 760px;
+  padding: 20px;
+  font-family: "SF Pro", sans-serif;
+}
+
+.primary-button {
+  width: 100%;
+  background-color: #186343;
+  border-radius: 10px;
+  color: white;
+  text-align: left;
+  font-weight: bold;
+  padding: 8px 15px;
+  border: none;
+  transition: background-color 100ms linear;
+
+  &:hover {
+    background-color: #639681;
+  }
+}
+
+.dir-path {
+  overflow-wrap: break-word;
+}
+
+.filenames {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-family: "SF Pro", sans-serif;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.mb-25 {
+  margin-bottom: 25px;
+}
