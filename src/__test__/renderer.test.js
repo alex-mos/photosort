@@ -1,5 +1,5 @@
 describe("renderer", () => {
-  test("init", () => {
-    console.log("render")
+  test.skip("copy request sending", () => {
+    
   })
 })
