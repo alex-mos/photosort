@@ -12,6 +12,8 @@ const _ = {}
 
 describe("main process", () => {
   beforeAll(() => {
+    createDir(path.join(srcDir))
+    createDir(path.join(destDir))
     touchFile(path.join(srcDir, "IMG_3023.jpg"))
     touchFile(path.join(srcDir, "IMG_3028.jpg"))
     touchFile(path.join(srcDir, "IMG_3072.jpg"))
@@ -21,8 +23,7 @@ describe("main process", () => {
   })
 
   afterAll(() => {
-    clearDir(srcDir)
-    clearDir(destDir)
+    removeDir(path.join(__dirname, "data"))
   })
 
   it("all files are copied", () => {
@@ -65,14 +66,14 @@ function touchFile(name) {
   fs.closeSync(file)
 }
 
-function clearDir(dir) {
-  const dirFileList = fs.readdirSync(dir)
-
-  for (const file of dirFileList) {
-    removeFile(path.join(dir, file))
-  }
+function createDir(dir) {
+  fs.mkdirSync(dir, { recursive: true })
 }
 
 function removeFile(name) {
   fs.rmSync(name)
+}
+
+function removeDir(dir) {
+  fs.rmdirSync(dir, { recursive: true })
 }
