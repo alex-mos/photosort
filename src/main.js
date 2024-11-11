@@ -1,8 +1,6 @@
 import { app, BrowserWindow, dialog, ipcMain } from "electron"
 import { dirname, join } from "node:path"
-
 import { fileURLToPath } from "url"
-
 import { copyFiles } from "./copyFiles.js"
 
 const __filename = fileURLToPath(import.meta.url) // get the resolved path to the file
@@ -24,17 +22,12 @@ app.on("ready", () => {
   mainWindow = new BrowserWindow({
     width: 440,
     height: 790,
-    // width: 1040,
-    // height: 860,
     webPreferences: {
       preload: join(__dirname, "preload.js"),
     },
   })
 
   mainWindow.loadFile(join("src", "index.html"))
-
-  // todo: remove
-  // mainWindow.webContents.openDevTools()
 })
 
 async function selectSrcDir() {

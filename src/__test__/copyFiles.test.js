@@ -26,7 +26,7 @@ describe("main process", () => {
     removeDir(path.join(__dirname, "data"))
   })
 
-  it("all files are copied", () => {
+  test("all files are copied", () => {
     const fileNames = ["3023", "IMG_3028"]
     const report = copyFiles(_, fileNames, srcDir, destDir)
 
