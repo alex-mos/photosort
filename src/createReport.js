@@ -11,7 +11,7 @@ export function createReport(alreadyExistedInDestDirFiles, notFoundFiles, duplic
     report += `👯‍♀️ В исходной папке найдено несколько файлов с подходящим названием:\n${duplicateFiles.join(", ")}.\n\n`
   }
   if (copiedFiles.length) {
-    report += `✅ Успешно скопированы файлы:\n${copiedFiles.join(", ")}.\n\n`
+    report += `✅ Успешно скопированы файлы:\n${copiedFiles.join(", ")}.\n\nВсего скопировано файлов: ${copiedFiles.length}.\n\n`
   }
 
   return report

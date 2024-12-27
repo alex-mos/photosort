@@ -1,4 +1,4 @@
-import { renameSync, readdirSync } from "node:fs"
+import { copyFileSync, readdirSync } from "node:fs"
 import { join } from "node:path"
 
 import { createReport } from "./createReport.js"
@@ -37,7 +37,7 @@ export function copyFiles(event, filenames, srcDir, destDir) {
     if (foundInSrcDir.length === 1) {
       try {
         copyFile(foundInSrcDir[0], srcDir, destDir)
-        copiedFiles.push(searchedName)
+        copiedFiles.push(foundInSrcDir[0])
       } catch (err) {
         return `Не удалось скопировать файл:\n${err.message}`
       }
@@ -48,5 +48,5 @@ export function copyFiles(event, filenames, srcDir, destDir) {
 }
 
 function copyFile(filename, srcDir, destDir) {
-  renameSync(join(srcDir, filename), join(destDir, filename))
+  copyFileSync(join(srcDir, filename), join(destDir, filename))
 }
