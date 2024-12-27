@@ -29,7 +29,8 @@ async function chooseDestinationDirectory() {
 async function copyFiles() {
   const filenames = filenamesElement.value.split("\n").filter((item) => item)
   const uniqueFilenames = [...new Set(filenames)]
-  const report = await window.versions.copyFiles(uniqueFilenames)
+  const trimmedUniqueFilenames = uniqueFilenames.map(item => item.trim())
+  const report = await window.versions.copyFiles(trimmedUniqueFilenames)
 
   alert(report)
 }
