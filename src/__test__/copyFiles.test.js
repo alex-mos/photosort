@@ -11,7 +11,7 @@ const destDir = path.join(__dirname, "data", "dest")
 const _ = {}
 
 describe("main process", () => {
-  beforeAll(() => {
+  beforeEach(() => {
     createDir(path.join(srcDir))
     createDir(path.join(destDir))
     touchFile(path.join(srcDir, "IMG_3023.jpg"))
@@ -22,7 +22,7 @@ describe("main process", () => {
     touchFile(path.join(srcDir, "IMG_3156.jpg"))
   })
 
-  afterAll(() => {
+  afterEach(() => {
     removeDir(path.join(__dirname, "data"))
   })
 
@@ -30,11 +30,9 @@ describe("main process", () => {
     const fileNames = ["3023", "IMG_3028"]
     const report = copyFiles(_, fileNames, srcDir, destDir)
 
-    expect(fs.existsSync(path.join(srcDir, "IMG_3023.jpg"))).toBe(false)
     expect(fs.existsSync(path.join(destDir, "IMG_3023.jpg"))).toBe(true)
-    expect(fs.existsSync(path.join(srcDir, "IMG_3028.jpg"))).toBe(false)
     expect(fs.existsSync(path.join(destDir, "IMG_3028.jpg"))).toBe(true)
-    expect(report).toBe("✅ Успешно скопированы файлы:\n3023, IMG_3028.\n\n")
+    expect(report).toBe("✅ Успешно скопированы файлы:\nIMG_3023.jpg, IMG_3028.jpg.\n\nВсего скопировано файлов: 2.\n\n")
   })
 
   test("none files are found", () => {
@@ -46,9 +44,10 @@ describe("main process", () => {
 
   test("file already exists in the destination directory", () => {
     const fileNames = ["IMG_3023"]
+    copyFiles(_, fileNames, srcDir, destDir)
     const report = copyFiles(_, fileNames, srcDir, destDir)
 
-    expect(fs.existsSync(path.join(srcDir, "IMG_3023.jpg"))).toBe(false)
+    expect(fs.existsSync(path.join(srcDir, "IMG_3023.jpg"))).toBe(true)
     expect(fs.existsSync(path.join(destDir, "IMG_3023.jpg"))).toBe(true)
     expect(report).toBe("🤨 Уже были в целевой папке файлы:\nIMG_3023.\n\n")
   })
